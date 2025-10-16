@@ -1,0 +1,97 @@
+/* TaskList.css */
+
+/* Container for the cards */
+.task-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(320px, 1fr));
+  gap: 36px;
+  justify-content: center;
+  align-items: start;
+  padding: 2rem 2rem;
+  background: #f9f9f9;
+}
+
+/* Responsive grid for smaller screens */
+@media (max-width: 1200px) {
+  .task-list {
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .task-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Editing form wrapper */
+.task-edit-form {
+  grid-column: span 1;
+}
+
+/* Priority styles (still useful inside TaskCard) */
+.task-priority-low {
+  color: #16a34a; /* green */
+  font-weight: bold;
+}
+
+.task-priority-medium {
+  color: #f59e0b; /* orange */
+  font-weight: bold;
+}
+
+.task-priority-high {
+  color: #dc2626; /* red */
+  font-weight: bold;
+}
+
+/* Status badge */
+.task-status-badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.task-status-todo {
+  background-color: #3b82f6; /* blue */
+}
+
+.task-status-in-progress {
+  background-color: #fbbf24; /* yellow */
+  color: #111; /* better contrast */
+}
+
+.task-status-done {
+  background-color: #16a34a; /* green */
+}
+
+/* Buttons */
+.task-action-btn {
+  margin-right: 0.5rem;
+  cursor: pointer;
+  padding: 0.4rem 0.7rem;
+  border: none;
+  border-radius: 3px;
+  font-size: 0.85rem;
+}
+
+.edit-btn {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+}
+
+.delete-btn {
+  background-color: #dc2626;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #b91c1c;
+}

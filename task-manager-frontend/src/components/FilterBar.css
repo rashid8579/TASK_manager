@@ -1,0 +1,40 @@
+/* FilterBar.css (enhanced for cleaner and modern filter bar) */
+
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #28324b;
+  padding: 0.9rem 1.4rem;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(30, 30, 40, 0.1);
+}
+
+.filter-input,
+.filter-select {
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  border: 1.2px solid #ccc;
+  font-size: 1rem;
+  min-width: 160px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  background: #fff;
+}
+
+.filter-input::placeholder {
+  color: #888;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.25);
+  background: #fff;
+  color: #222;
+  font-weight: 700;
+}

@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd task-manager-backend && nodemon server.js",
+    "client": "cd task-manager-frontend && npm run dev"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "react-icons": "^5.5.0",
+    "react-toastify": "^11.0.5"
+  }
+}

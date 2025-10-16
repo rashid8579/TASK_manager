@@ -1,0 +1,227 @@
+/* TaskCard.css (enhanced with fixed layout for 3 cards per row and breathing room) */
+
+/* Individual task card */
+.task-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 28px 22px 20px 22px; /* Balanced padding */
+  min-height: 320px;
+  box-shadow: 0 8px 24px rgba(30, 40, 80, 0.11);
+  color: #222;
+  font-family: Arial, sans-serif;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 370px;
+  margin: 0 auto; /* Center card in grid cell */
+}
+
+/* Card hover effect */
+.task-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 18px 48px rgba(37, 99, 235, 0.15), 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+/* Header with wrapping and spacing */
+.task-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  gap: 14px;
+}
+
+/* Title with labeling */
+.task-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.task-card-title::before {
+  content: "Title: ";
+   font-size: 1.13rem;
+  color: #1a202c;
+  font-weight: 800;
+}
+
+/* Priority badge with consistent size */
+.task-badge[class*="task-priority-"] {
+  padding: 9px 18px;
+  border-radius: 24px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  white-space: nowrap;
+  min-width: 140px;
+  max-width: 210px;
+  gap: 8px;
+  user-select: none;
+}
+
+/* Pop animation for priority */
+.pop-animation {
+  animation: pop 0.3s ease-in-out;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.9); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Gradient badges */
+.task-badge.task-priority-low {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.task-badge.task-priority-medium {
+  background: linear-gradient(135deg, #f1c40f, #d68910);
+  color: #000;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.7);
+}
+
+.task-badge.task-priority-high {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Description */
+.task-card-desc::before {
+  content: "Description: ";
+  font-weight: 600;
+  color: #444444;
+}
+.task-card-desc {
+  color: #333;
+  font-size: 1.08rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* Meta info */
+.task-card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 21px;
+  font-weight: 600;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* Assigned user info */
+.task-card-meta span {
+  font-style: italic;
+  white-space: nowrap;
+  color: #555;
+  font-weight: 600;
+}
+
+/* Status label and select */
+.task-status-label {
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 8px;
+  color: #333;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.task-card-footer select {
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1.2px solid #ccc;
+  margin-left: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.95rem;
+}
+
+.task-card-footer select:focus {
+  transform: scale(1.08);
+  border-color: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.44);
+  outline: none;
+}
+
+/* Status badge colors */
+.task-status-badge {
+  font-weight: 700;
+}
+
+.task-status-todo {
+  color: #e67e22;
+}
+
+.task-status-in-progress {
+  color: #3498db;
+}
+
+.task-status-done {
+  color: #2ecc71;
+}
+
+/* Action buttons */
+.task-actions {
+  display: inline-flex;
+  gap: 10px;
+  margin-left: 16px;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 12px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background-color 0.25s, transform 0.25s;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+}
+
+.edit-btn {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px);
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-3px);
+}
+
+.task-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 18px 48px rgba(37, 99, 235, 0.15), 0 8px 24px rgba(0, 0, 0, 0.14);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}

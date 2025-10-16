@@ -1,0 +1,77 @@
+/* TaskForm.css */
+
+.task-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;            /* More space between inputs */
+  margin-bottom: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9fafb;
+}
+
+/* Inputs and selects */
+.task-form input[type="text"],
+.task-form input[type="date"],
+.task-form select ,
+ .task-form button
+{
+  padding: 0.65rem 1rem;
+  border: 1.5px solid #bbb;
+  border-radius: 8px;
+  flex: 1 1 100px;     /* Responsive width with min size */
+  font-size: 1rem;
+  color: #222;
+  background-color: #fff;
+  transition: border-color 0.2s ease;
+  min-width: unset;
+}
+
+.task-form input[type="text"]::placeholder,
+.task-form input[type="date"]::placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+.task-form input[type="text"]:focus,
+.task-form input[type="date"]:focus,
+.task-form select:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.5);
+}
+
+/* Buttons */
+.task-form button {
+  flex: 0 0 130px;
+  padding: 0.65rem 1.3rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background-color 0.25s;
+  color: white;
+  max-width: 100%;
+}
+
+.task-form button[type="submit"] {
+  background-color: #2563eb;
+}
+
+.task-form button[type="submit"]:hover {
+  background-color: #1d4ed8;
+}
+
+.task-form button[type="button"] {
+  background-color: #ef4444;
+}
+
+.task-form button[type="button"]:hover {
+  background-color: #dc2626;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.9) contrast(250%) brightness(70%);
+  opacity: 1;
+}

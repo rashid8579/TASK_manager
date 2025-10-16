@@ -1,0 +1,304 @@
+/* Ensure html and body fill full height */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+/* Ensure root/app takes the full screen */
+#root, .App {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+/* Ensure the login/register form container is fully centered */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #1e1e1e;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+
+/* Container */
+.auth-container {
+  display: flex;
+  justify-content: center; /* horizontal centering */
+  align-items: center;     /* vertical centering */
+  min-height: 100vh;       /* full viewport height */
+  padding: 1rem;           /* small padding for small screens */
+  background-color: #1e1e1e;
+  box-sizing: border-box;
+}
+
+/* Form */
+.auth-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;   /* limit width on large screens */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+/* Title */
+.auth-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #111;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Error message */
+.auth-error {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Input group */
+.auth-input-group {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.auth-input-group label {
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Inputs */
+.auth-input {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  background: #f9f9f9;
+  color: #111;
+}
+
+.auth-input:focus {
+  border-color: #2563eb;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+}
+
+/* Button */
+.auth-button {
+  width: 100%;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #2563eb;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.auth-button:hover {
+  background-color: #1e40af;
+}
+
+/* Switch links */
+.auth-switch {
+  margin-top: 1rem;
+  text-align: center;
+  color: #444;
+}
+
+.auth-switch button {
+  margin-left: 0.5rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid #2563eb;
+  border-radius: 6px;
+  background: transparent;
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.auth-switch button:hover {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* Responsive: smaller padding on very small screens */
+@media (max-height: 500px) {
+  .auth-container {
+    align-items: flex-start; /* avoid overflowing top on very small height */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+/* Fade-in animation for forms */
+.auth-form-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth scrolling for container */
+.auth-container {
+  scroll-behavior: smooth;
+}
+
+
+/* Container for the main content */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* limits width on very large screens */
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Action buttons (Logout / Clear) */
+.home-actions {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* TaskForm styling */
+.task-form-container {
+  width: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+/* FilterBar styling */
+.filter-bar-container {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* TaskList container */
+.task-list-container {
+  width: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Make sure root containers fill the viewport */
+#root, .App {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+/* Background gradient for full-screen container */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 1rem;
+  box-sizing: border-box;
+  /* Replace solid color with gradient */
+  background: linear-gradient(135deg, #2563eb 0%, #1e1e1e 100%);
+}
+
+/* Card styling for login/register box */
+.auth-form {
+  background: rgba(255,255,255,0.97);
+  padding: 2rem;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.14), 
+              0 2px 6px rgba(0, 0, 0, 0.17);
+  border: 1.5px solid #2563eb; /* subtle blue border */
+  transition: box-shadow 0.18s;
+}
+
+/* Optional: Add a card hover effect */
+.auth-form:hover {
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.18), 
+              0 4px 12px rgba(0,0,0,0.21);
+}
+
+/* Optional: Card fade-in animation already present */
+.auth-form-active {
+  opacity: 0;
+  transform: scale(0.98);
+  animation: cardFadeIn 0.4s ease-out forwards;
+}
+
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Admin header banner */
+.admin-header-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.admin-header-banner h2 {
+  margin-bottom: 0.3rem;
+}
+
+.admin-header-admin-text {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #ffc107;
+}
+
+/* Task-list container */
+.task-list-container {
+  width: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+}
+
+/* Filter bar container */
+.filter-bar-container {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+
+
