@@ -9,6 +9,8 @@ import Register from "./Register";
 import RoleSelection from "../components/RoleSelection";
 import "./Auth.css";
 
+const API = import.meta.env.VITE_API_URL;
+
 function Home() {
   const [tasks, setTasks] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -44,14 +46,14 @@ function Home() {
       return null;
     }
     try {
-      const userRes = await axios.get("http://localhost:5000/api/auth/me", {
+      const userRes = await axios.get(`${API}/api/auth/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const currentUser = userRes.data.user;
       setUser(currentUser);
 
       if (currentUser.role === "admin") {
-        const usersRes = await axios.get("http://localhost:5000/api/users", {
+        const usersRes = await axios.get(`${API}/api/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setAllUsers(usersRes.data);
@@ -83,7 +85,7 @@ function Home() {
     if (filtersObj.status) params.status = filtersObj.status;
 
     try {
-      const tasksRes = await axios.get("http://localhost:5000/api/tasks", {
+      const tasksRes = await axios.get(`${API}/api/tasks`, {
         headers: { Authorization: `Bearer ${token}` },
         params,
       });
@@ -117,7 +119,7 @@ function Home() {
   const handleAddTask = async (taskData) => {
     try {
       const token = getToken();
-      await axios.post("http://localhost:5000/api/tasks", taskData, {
+      await axios.post(`${API}/api/tasks`, taskData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       await fetchTasks(filters);
@@ -144,7 +146,7 @@ function Home() {
     try {
       const token = getToken();
       const res = await axios.post(
-        "http://localhost:5000/api/admin/generate-invite",
+        `${API}/api/admin/generate-invite`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
