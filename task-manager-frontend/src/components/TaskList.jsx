@@ -4,6 +4,8 @@ import TaskForm from "./TaskForm";
 import TaskCard from "./TaskCard";
 import "./TaskList.css";
 
+const API = import.meta.env.VITE_API_URL;
+
 function TaskList({ tasks, setTasks, currentUser }) {
   const [editingTask, setEditingTask] = useState(null);
   const token = localStorage.getItem("token");
@@ -12,7 +14,7 @@ function TaskList({ tasks, setTasks, currentUser }) {
   const handleUpdate = async (updatedTask) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/tasks/${updatedTask._id}`,
+        `${API}/api/tasks/${updatedTask._id}`,
         updatedTask,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -30,7 +32,7 @@ function TaskList({ tasks, setTasks, currentUser }) {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this task?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+      await axios.delete(`${API}/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTasks((prev) => prev.filter((t) => t._id !== id));

@@ -1,7 +1,8 @@
-// src/pages/Register.jsx
 import { useState } from "react";
 import axios from "axios";
 import "./Auth.css";
+
+const API = import.meta.env.VITE_API_URL;
 
 function Register({ onRegister, switchToLogin, selectedRole, goBackToRoleSelection }) {
   const [name, setName] = useState("");
@@ -15,7 +16,7 @@ function Register({ onRegister, switchToLogin, selectedRole, goBackToRoleSelecti
     setError("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", {
+      const res = await axios.post(`${API}/api/auth/register`, {
         name,
         email,
         password,
@@ -45,7 +46,6 @@ function Register({ onRegister, switchToLogin, selectedRole, goBackToRoleSelecti
   return (
     <div className="auth-container">
       <form onSubmit={handleSubmit} className="auth-form auth-form-active">
-
         <div style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
           <button
             type="button"
@@ -73,9 +73,7 @@ function Register({ onRegister, switchToLogin, selectedRole, goBackToRoleSelecti
             {selectedRole === "admin" ? "🔐 Admin Register" : "👤 User Register"}
           </h2>
         </div>
-
         {error && <p className="auth-error">{error}</p>}
-
         <div className="auth-input-group">
           <label>Name:</label>
           <input
@@ -86,7 +84,6 @@ function Register({ onRegister, switchToLogin, selectedRole, goBackToRoleSelecti
             className="auth-input"
           />
         </div>
-
         <div className="auth-input-group">
           <label>Email:</label>
           <input
@@ -97,7 +94,6 @@ function Register({ onRegister, switchToLogin, selectedRole, goBackToRoleSelecti
             className="auth-input"
           />
         </div>
-
         <div className="auth-input-group">
           <label>Password:</label>
           <input
@@ -108,8 +104,6 @@ function Register({ onRegister, switchToLogin, selectedRole, goBackToRoleSelecti
             className="auth-input"
           />
         </div>
-
-        {/* New Invitation Code input */}
         <div className="auth-input-group">
           <label>Invitation Code:</label>
           <input
@@ -121,11 +115,9 @@ function Register({ onRegister, switchToLogin, selectedRole, goBackToRoleSelecti
             placeholder="Enter invitation code"
           />
         </div>
-
         <button type="submit" className="auth-button">
           Register as {selectedRole === "admin" ? "Admin" : "User"}
         </button>
-
         <p className="auth-switch">
           Already have an account?
           <button
