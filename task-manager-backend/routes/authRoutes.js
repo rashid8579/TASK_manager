@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const { register, login, getMe, changePassword } = require("../controllers/authController");
+const { register, login, getMe } = require("../controllers/authController");
 const authMiddleware = require("../middleware/authMiddleware");
 const User = require("../models/User");
 
@@ -18,9 +18,6 @@ router.post("/login", login);
 // Get logged-in user info
 router.get("/me", authMiddleware, getMe);
 
-// Change password route
-router.post("/change-password", authMiddleware, changePassword);
-
 // =============================
 // Temporary route: Create first admin
 // =============================
@@ -31,6 +28,7 @@ router.get("/create-admin", async (req, res) => {
       return res.status(400).json({ msg: "Admin already exists" });
     }
 
+    // Create admin with salt rounds set to 10 for faster hash generation
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash("Rashid8578", saltRounds);
 
@@ -55,5 +53,6 @@ router.get("/create-admin", async (req, res) => {
     });
   }
 });
+
 
 module.exports = router;
