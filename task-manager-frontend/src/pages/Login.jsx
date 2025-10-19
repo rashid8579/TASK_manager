@@ -9,12 +9,10 @@ function Login({ onLogin, switchToRegister, selectedRole, goBackToRoleSelection 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // ⬅️ new loading state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setLoading(true); // ⬅️ start loading
 
     try {
       const res = await axios.post(`${API}/api/auth/login`, {
@@ -23,29 +21,25 @@ function Login({ onLogin, switchToRegister, selectedRole, goBackToRoleSelection 
       });
 
       // Check user's role
-      const userRole = res.data.user.role;
+      const userRole = res.data.user.role; // assumes response has user.role
 
       if (userRole !== selectedRole) {
         setError("INVALID CREDENTIAL: You can't log in as this role with these credentials.");
+        // Optional: clear token, name if set
         localStorage.removeItem("token");
         localStorage.removeItem("name");
-        setLoading(false);
-        return;
+        return; // ⛔ block further login steps
       }
 
-      // Store token and name
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("name", res.data.user.name);
 
-      // ✅ Call onLogin after storing token (keeps logic same)
-      await onLogin(); // make sure parent can fetch tasks in parallel
+      onLogin();
       setEmail("");
       setPassword("");
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.msg || "Login failed. Please check credentials.");
-    } finally {
-      setLoading(false); // ⬅️ stop loading
     }
   };
 
@@ -57,9 +51,9 @@ function Login({ onLogin, switchToRegister, selectedRole, goBackToRoleSelection 
             type="button"
             onClick={goBackToRoleSelection}
             style={{
-              background: "#e0e7ef",
-              border: "1px solid #888",
-              borderRadius: "50%",
+              background: "#e0e7ef", // light visible background
+              border: "1px solid #888", // clear border
+              borderRadius: "50%", // makes it circular
               width: "38px",
               height: "38px",
               display: "flex",
@@ -68,7 +62,7 @@ function Login({ onLogin, switchToRegister, selectedRole, goBackToRoleSelection 
               fontSize: "1.5rem",
               cursor: "pointer",
               marginRight: "0.8rem",
-              color: "#3498db"
+              color: "#3498db" // visible arrow color
             }}
             aria-label="Back"
             title="Back to Role Selection"
@@ -104,14 +98,8 @@ function Login({ onLogin, switchToRegister, selectedRole, goBackToRoleSelection 
           />
         </div>
 
-        <button
-          type="submit"
-          className="auth-button"
-          disabled={loading} // ⬅️ disable button while logging in
-        >
-          {loading
-            ? `Logging in as ${selectedRole === "admin" ? "Admin" : "User"}...`
-            : `Login as ${selectedRole === "admin" ? "Admin" : "User"}`}
+        <button type="submit" className="auth-button">
+          Login as {selectedRole === "admin" ? "Admin" : "User"}
         </button>
 
         {selectedRole !== "admin" && (
