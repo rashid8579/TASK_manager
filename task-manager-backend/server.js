@@ -6,29 +6,31 @@ const taskRoutes = require("./routes/taskRoutes");
 const cors = require("cors");
 const adminRoutes = require("./routes/adminRoutes");
 const userRoutes = require('./routes/users');
+
 dotenv.config();
 connectDB();
 
 const app = express();
 
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 app.use(cors({
-  origin: "http://localhost:5173", // your frontend URL
+  origin: FRONTEND_URL,
   credentials: true,
 }));
 
 app.use(express.json());
 
-// Remove these debug logs once everything works
-// console.log("Auth Routes:", authRoutes);
-// console.log("Task Routes:", taskRoutes);
-
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/admin", adminRoutes);
-app.use('/api/users', userRoutes);
-// Add a basic test route
+app.use("/api/users", userRoutes);
+
 app.get("/", (req, res) => {
   res.json({ message: "Task Manager API is running!" });
+});
+
+app.get("/api/health", (req, res) => {
+  res.json({ status: "OK" });
 });
 
 const PORT = process.env.PORT || 5000;
